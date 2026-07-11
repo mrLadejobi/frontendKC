@@ -1,0 +1,6 @@
+{
+  "name": "Digital Banking App",
+  "description": "A sleek, modern frontend web application for a digital banking API.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
