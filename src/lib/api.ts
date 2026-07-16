@@ -32,6 +32,13 @@ export const apiFetch = async (endpoint: string, options: RequestInit = {}) => {
     }
 
     if (!res.ok) {
+      if (res.status === 401) {
+        removeAuthToken()
+        localStorage.removeItem('bank_user_name');
+        localStorage.removeItem('bank_account_number');
+
+        window.location.href = '/';
+      }
       throw new Error(data.message || data.error || `HTTP Error ${res.status}`);
     }
     
