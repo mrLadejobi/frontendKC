@@ -153,17 +153,17 @@ export default function Dashboard({ onLogout }: DashboardProps) {
       {/* Header */}
       <header className="bg-white px-6 py-4 border-b border-slate-200 sticky top-0 z-30">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center shadow-md">
+          <div className="flex items-center gap-3 min-w-0 flex-1 mr-4">
+            <div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center shadow-md shrink-0">
               <Wallet className="w-5 h-5 text-white" />
             </div>
-            <div>
-              <p className="text-xs text-slate-500 font-medium">{greeting}</p>
-              <h1 className="text-sm font-bold text-slate-900">{userName}</h1>
+            <div className="min-w-0">
+              <p className="text-xs text-slate-500 font-medium truncate">{greeting}</p>
+              <h1 className="text-sm font-bold text-slate-900 truncate">{userName}</h1>
             </div>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <button className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-slate-200 transition-colors">
               <Bell className="w-4 h-4" />
             </button>
@@ -197,9 +197,9 @@ export default function Dashboard({ onLogout }: DashboardProps) {
                 <span className="text-xs font-medium">Active</span>
               </div>
             </div>
-            <div className="flex items-baseline gap-1">
-              <span className="text-4xl font-medium text-indigo-300">$</span>
-              <h2 className="text-5xl font-bold font-mono tracking-tight">
+            <div className="flex items-baseline gap-1 break-all">
+              <span className="text-3xl sm:text-4xl font-medium text-indigo-300 shrink-0">$</span>
+              <h2 className="text-4xl sm:text-5xl font-bold font-mono tracking-tight">
                 {loading ? '...' : balance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </h2>
             </div>
@@ -265,13 +265,13 @@ export default function Dashboard({ onLogout }: DashboardProps) {
                   const absAmount = Math.abs(t.amount || 0);
                   
                   return (
-                    <div key={t.id || idx} className="flex items-center justify-between p-4 border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors rounded-xl">
-                      <div className="flex items-center gap-4">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center ${isDebit ? 'bg-rose-50 text-rose-600' : 'bg-emerald-50 text-emerald-600'}`}>
+                    <div key={t.id || idx} className="flex items-center justify-between p-4 border-b border-slate-50 last:border-0 hover:bg-slate-50 transition-colors rounded-xl gap-4">
+                      <div className="flex items-center gap-4 min-w-0 flex-1">
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${isDebit ? 'bg-rose-50 text-rose-600' : 'bg-emerald-50 text-emerald-600'}`}>
                           {isDebit ? <ArrowRightLeft className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                         </div>
-                        <div>
-                          <p className="text-sm font-semibold text-slate-800">
+                        <div className="min-w-0">
+                          <p className="text-sm font-semibold text-slate-800 truncate">
                             {t.description || (isDebit ? `Transfer to ${t.to_account || 'someone'}` : 'Account Funded')}
                           </p>
                           <p className="text-xs text-slate-500 mt-0.5">
@@ -279,7 +279,7 @@ export default function Dashboard({ onLogout }: DashboardProps) {
                           </p>
                         </div>
                       </div>
-                      <div className="text-right">
+                      <div className="text-right shrink-0">
                         <p className={`text-sm font-bold ${isDebit ? 'text-rose-600' : 'text-emerald-600'}`}>
                           {isDebit ? '-' : '+'}${absAmount.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                         </p>
