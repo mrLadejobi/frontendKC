@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = 'https://bankapi-wmre.onrender.com';
 
 export const getAuthToken = () => localStorage.getItem('bank_token');
 export const setAuthToken = (token: string) => localStorage.setItem('bank_token', token);
